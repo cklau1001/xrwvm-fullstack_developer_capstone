@@ -136,3 +136,9 @@ img{
     text-align: center;
     font-size: 14px; 
 }
+
+.vertical-line {
+    border-left: 3px solid rgba(0, 0, 0, 0.589); /* Adjust width, style, and color */
+    height: 300px; /* Set the desired height of the line */
+    margin-left: 50px; /* Optional: Adjust position */
+}
