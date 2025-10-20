@@ -124,3 +124,15 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.contactus_property {
+    text-align: center;
+    font-size: 16px; 
+    font-weight: 700;
+    
+}
+
+.contactus_value {
+    text-align: center;
+    font-size: 14px; 
+}
