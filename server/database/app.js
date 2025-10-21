@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const  cors = require('cors')
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const app = express()
 const port = 3030;
@@ -14,8 +14,12 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 const reviews_data = JSON.parse(fs.readFileSync("reviews.json", 'utf8'));
 const dealerships_data = JSON.parse(fs.readFileSync("dealerships.json", 'utf8'));
 
-
-mongoose.connect("mongodb://mongo_db:27017/",{'dbName':'dealershipsDB'});
+/* 
+   mongo_db is the docker service to host the local monogodb.
+   Please ensure that a mongo_db service is started by docker compose before
+   running this application.
+*/
+mongoose.connect(process.env.MONGO_URI,{'dbName':'dealershipsDB'});
 
 
 const Reviews = require('./review');
