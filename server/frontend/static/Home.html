@@ -7,12 +7,13 @@
   
 <script>
 
-// const logout = async(e) => {
-async function logout() {
+const logout = async(e) => {
 
+    e.preventDefault();   // Need to allow <a> to call fetch() properly
+    
     let logout_url = window.location.origin + "/djangoapp/logout";
-   
-    // TODO: Need to fix the fetch issue
+    
+    
     
     try {
         const res = await fetch(logout_url, {
@@ -44,7 +45,6 @@ async function logout() {
 
 }
 
-
 let checkSession = ()=>{
   let curr_user = sessionStorage.getItem("username");
   
@@ -57,7 +57,7 @@ let checkSession = ()=>{
 
     document.getElementById("loginlogout").innerHTML = 
     '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+    '<a class="homepage_links" onclick="logout(event)" href="/">Logout</a>'
   } else {
     
     console.log("[Home.html->checkSession()]: New session ");
