@@ -12,9 +12,7 @@ const logout = async(e) => {
     e.preventDefault();   // Need to allow <a> to call fetch() properly
     
     let logout_url = window.location.origin + "/djangoapp/logout";
-    
-    
-    
+            
     try {
         const res = await fetch(logout_url, {
             method: "GET",
