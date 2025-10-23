@@ -17,6 +17,7 @@ table{
     display: flex;
     flex-direction: column;
     border: solid grey;
+    /* border: solid purple; */
     position: relative;
     height:7cm;
     width:6cm;
@@ -60,6 +61,8 @@ table{
     font-style: italic;
     color: gray;
     font-size: small;
+    /* font-size: medium; */
+    text-align: center;
 }
 
 .review {
@@ -84,5 +87,6 @@ table{
 
 .review_icon:hover {
   transform: scale(1.1);
-  border: solid lightgray;
+  border: solid lightgray; 
+  /* border: 2px solid #080808; */
 }
