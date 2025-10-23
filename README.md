@@ -4,12 +4,13 @@
 This is a sample application to demostrate a microservice architecture with 
 the following three microservices.
 
-# Techology stack
+# Technology stack
 - Python Django
 - NodeJS / Express
 - React
 - SQLite
 - MongoDB
+- IBM Watsion Sentiment Analyzer
 
 
 ```
