@@ -1,3 +1,5 @@
+[![Build status](https://github.com/cklau1001/xrwvm-fullstack_developer_capstone/actions/workflows/main.yml/badge.svg)](https://github.com/cklau1001/xrwvm-fullstack_developer_capstone/actions/workflows/main.yml)
+
 # Introduction
 This is a sample application to demostrate a microservice architecture with 
 the following three microservices.
