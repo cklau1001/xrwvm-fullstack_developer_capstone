@@ -14,6 +14,7 @@ searchcars_url = os.getenv(
     'searchcars_url',
     default="http://localhost:3050/")
 
+
 # Add code for get requests to back end
 def get_request(endpoint, **kwargs):
     params = ""
