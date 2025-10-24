@@ -10,7 +10,9 @@ backend_url = os.getenv(
 sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url',
     default="http://localhost:5050/")
-
+searchcars_url = os.getenv(
+    'searchcars_url',
+    default="http://localhost:3050/")
 
 # Add code for get requests to back end
 def get_request(endpoint, **kwargs):
@@ -54,3 +56,26 @@ def post_review(data_dict):
         return response.json()
     except Exception as err:
         print(f"Network exception occurred, err={err}")
+
+
+# Car inventory features below
+def searchcars_request(endpoint, **kwargs):
+
+    params = ""
+    if kwargs:
+        for key, value in kwargs.items():
+            params = params+key + "=" + value + "&"
+
+    request_url = searchcars_url + endpoint + "?" + params
+
+    print("[searchcars_request]: GET from {} ".format(request_url))
+    try:
+        # Call get method of requests library with URL and parameters
+        response = requests.get(request_url)
+        print(f"[searchcars_request]: response={response.json()}")
+        return response.json()
+    except Exception as err:
+        # If any error occurs
+        print(f"Network exception occurred: err={err}")
+    finally:
+        print("GET request call complete!")
