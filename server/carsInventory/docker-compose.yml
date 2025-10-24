@@ -13,6 +13,7 @@ services:
 
   # Node api service
   api:
+    container_name: carsInventory
     image: nodeapp
     ports:
       - 3050:3050
