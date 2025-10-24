@@ -2,7 +2,7 @@
 
 # Introduction
 This is a sample application to demostrate a microservice architecture with 
-the following three microservices.
+the following 4 microservices.
 
 # Technology stack
 - Python Django
@@ -15,15 +15,15 @@ the following three microservices.
 
 ```
 
-user ---> frontend microservice             --->   Dealers microserrvice
-            django                                    NodeJS / Express
-             (endpoint and proxy to backend)          MongoDB            
-            SQL lite                                   (store dealers info)
-             (store user details)                                    
-            React
-             (frontend)
-
-             
+user ---> frontend microservice             - RESTful -->   Dealers microserrvice
+            django                                            NodeJS / Express
+             (endpoint and proxy to backend)                  MongoDB            
+            SQL lite                                           (store dealers info)
+             (store user details)                    
+            React                           - RESTful -->   Car inventory microserrvice
+             (frontend)                                        NodeJS / Express
+                                                               MongoDB
+                                                                (store car inventory)
              |
              |  RESTful 
              |
@@ -31,4 +31,3 @@ user ---> frontend microservice             --->   Dealers microserrvice
           IBM Watsion Sentiment analyzer microservice 
           (Provide sentiment analysis on provided comment)
 ```
-
