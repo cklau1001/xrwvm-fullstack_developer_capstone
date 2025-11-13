@@ -1,0 +1,116 @@
+spring:
+  application:
+    name: capstone
+
+  # To support Kubernetes secret
+  config:
+    import:
+      - "optional:file:C:/Users/cklau/IdeaProjects/dealership/jwt.yml"  # mark it as optional
+      - "optional:file:/etc/secret/jwt.yml"
+
+  # H2 database
+  #  https://www.baeldung.com/spring-boot-h2-database
+  #
+  datasource:
+    # Uncomment to enable h2 database
+    #
+    # url: jdbc:h2:mem:dealership
+    # url: jdbc:h2:file:~/h2data/dealership
+  # spring.datasource.url=jdbc:h2:file:/data/testdb  # File-based db
+    # driverClassName: org.h2.Driver
+    # username: sa
+    # password: password
+
+    # PostgreSQL database below
+    #
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/dealership?currentSchema=dealership_dev
+    username: postgres
+    password: abc12345
+    driverClassName: org.postgresql.Driver
+
+  #
+  # https://docs.spring.io/spring-boot/how-to/data-initialization.html
+  #
+  jpa:
+    # database-platform: org.hibernate.dialect.H2Dialect
+    # defer-datasource-initialization: true  # To allow H2 create the tables first
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hiberate:
+        format_sql: true
+  # H2 console - http://localhost:8080/h2-console
+
+  # h2:
+  #  console:
+  #    enabled: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:create_users.postgres.sql
+  # spring.sql.init.data-locations=import_*_users.sql
+
+  # Lazy loading of beans
+  main:
+    lazy-initialization: true  # save 200 ms
+    allow-bean-definition-overriding: true
+  #
+  # https://docs.spring.io/spring-cloud-kubernetes/reference/property-source-config/secrets-propertysource.html
+  # spring cloud expects configMap and secret name the same as the spring.application.name
+  # The service account can query the target kube resources ( configmaps, secrets, etc )
+  # It also creates a kubernetes profile that one can customize
+  #
+
+# Prometheus integration - https://www.baeldung.com/spring-boot-prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+
+server:
+  tomcat:
+    accesslog:
+      enabled: false
+      pattern: "%h %l %u %t \"%r\" %s %b %D"
+      directory: logs
+      prefix: access_log
+      suffix: .log
+      
+# org.springframework.data.mongodb
+# logging.level.org.springframework.boot.autoconfigure=DEBUG  ## analyze the auto-config classes
+
+logging:
+  level:
+    root: INFO
+    io:
+      cklau1001:
+        capstone: DEBUG
+    org:
+      springframework:
+        web: INFO
+        security: INFO
+        jdbc:
+          datasource:
+            init:
+              ScriptUtils: INFO
+        cache: TRACE
+      hiberate:
+        SQL: INFO
+        type: INFO
+    com:
+      fasterxml:
+        jackson: INFO
+
+application:
+  jwtutil:
+    # secretKey: "INJECTED_BY_SECRET"
+    signAlg: "HmacSHA256"
+  dealer:
+    baseUrl: http://localhost:3030
+  inventory:
+    baseUrl: http://localhost:3050

@@ -1,0 +1,6 @@
+server:
+  port: 8083
+  config:
+    import:
+      - "optional:file:C:/Users/cklau/IdeaProjects/dealership/jwt.yml"  # mark it as optional
+
