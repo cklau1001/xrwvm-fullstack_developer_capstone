@@ -5,28 +5,17 @@ spring:
   # To support Kubernetes secret
   config:
     import:
-      - "optional:file:C:/Users/cklau/IdeaProjects/dealership/jwt.yml"  # mark it as optional
       - "optional:file:/etc/secret/jwt.yml"
+      - "optional:file:/etc/secret/datasource.yml"
 
   # H2 database
   #  https://www.baeldung.com/spring-boot-h2-database
   #
   datasource:
-    # Uncomment to enable h2 database
-    #
-    # url: jdbc:h2:mem:dealership
-    # url: jdbc:h2:file:~/h2data/dealership
-  # spring.datasource.url=jdbc:h2:file:/data/testdb  # File-based db
-    # driverClassName: org.h2.Driver
-    # username: sa
-    # password: password
-
     # PostgreSQL database below
     #
     platform: postgres
     url: jdbc:postgresql://localhost:5432/dealership?currentSchema=dealership_dev
-    username: postgres
-    password: abc12345
     driverClassName: org.postgresql.Driver
 
   #
@@ -49,7 +38,7 @@ spring:
   sql:
     init:
       mode: always
-      data-locations: classpath:create_users.postgres.sql
+      # data-locations: classpath:create_users.postgres.sql
   # spring.sql.init.data-locations=import_*_users.sql
 
   # Lazy loading of beans
