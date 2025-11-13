@@ -5,22 +5,25 @@ This is a sample application to demostrate a microservice architecture with
 the following 4 microservices.
 
 # Technology stack
-- Python Django
+- SpringBoot 
+  - Spring security for establishing fine-grained entitlement and JWT authentication with React
+  - Spring cache for storing responses of remote microservices
+- PostgreSQL database used by SpringBoot
 - NodeJS / Express
-- React
-- SQLite
+- React as frontend
 - MongoDB
 - IBM Watsion Sentiment Analyzer
 
+Note: Django is deprecated in this version. 
 
 ```
 
-user ---> frontend microservice             - RESTful -->   Dealers microserrvice
-            django                                            NodeJS / Express
+user ---> frontend microservice             - RESTful / JWT token  -->   Dealers microserrvice
+            Springboot                                            NodeJS / Express
              (endpoint and proxy to backend)                  MongoDB            
-            SQL lite                                           (store dealers info)
-             (store user details)                    
-            React                           - RESTful -->   Car inventory microserrvice
+            PostgreSQL DB                                          (store dealers info)
+             (store user details and car models)                    
+            React                           - RESTful / JWT token  -->   Car inventory microserrvice
              (frontend)                                        NodeJS / Express
                                                                MongoDB
                                                                 (store car inventory)
