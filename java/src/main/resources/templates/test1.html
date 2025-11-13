@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test logout url</title>
+
+  <script>
+
+async function logout(e) {
+      try {
+        e.preventDefault();
+
+        let logout_url = window.location.origin + "/djangoapp/logout";
+        const response = await fetch(logout_url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json(); 
+        console.log(data);
+        console.log("OK to call logout url: " + logout_url);
+
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  </script>
+
+</head>
+<body>
+  <button onclick="logout()">logout</button>
+  <a onclick="logout(event)" href="#">logout</a>
+</body>
+</html>
