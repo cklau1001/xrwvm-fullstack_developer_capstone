@@ -7,6 +7,7 @@ It includes the static HTML as thymeleaf templates and React scripts.
 can present for the protected endpoints.
 - A JWT servlet filter is implemented for the token authentication.
 - Spring cache is used to store the responses of remote microservices that improves the responsiveness of the system from
-React frontend.
+React frontend, and save token costs on OpenAI endpoints.
 - PostgreSQL database is used to store the user details and car model inventory.
+- Spring AI is used to trigger OpenAI endpoints.
 

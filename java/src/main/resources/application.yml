@@ -7,6 +7,7 @@ spring:
     import:
       - "optional:file:/etc/secret/jwt.yml"
       - "optional:file:/etc/secret/datasource.yml"
+      - "optional:file:/etc/secret/springai.yml"
 
   # H2 database
   #  https://www.baeldung.com/spring-boot-h2-database
@@ -45,6 +46,24 @@ spring:
   main:
     lazy-initialization: true  # save 200 ms
     allow-bean-definition-overriding: true
+
+  # enable virtual threads for long running response
+  threads:
+    virtual:
+      enabled: true
+
+  ai:
+    openrouter:
+      base_url: https://openrouter.ai/api/v1
+      completion_path: "/chat/completions"
+      embedding_path: "/embeddings"
+      chat:
+        options:
+          max_tokens: 20
+          models:
+            - qwen/qwen-2.5-coder-32b-instruct:free
+            - deepseek/deepseek-chat-v3-0324:free
+
   #
   # https://docs.spring.io/spring-cloud-kubernetes/reference/property-source-config/secrets-propertysource.html
   # spring cloud expects configMap and secret name the same as the spring.application.name

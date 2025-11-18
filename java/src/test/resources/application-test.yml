@@ -1,0 +1,8 @@
+logging:
+  level:
+    root: DEBUG
+    org:
+      springframeowrk: DEBUG
+    io:
+      cklau1001:
+        capstone: DEBUG

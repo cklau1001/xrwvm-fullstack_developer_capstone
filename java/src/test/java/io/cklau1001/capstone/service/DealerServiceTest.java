@@ -70,6 +70,12 @@ public class DealerServiceTest {
     @Autowired
     private DealerService dealerService;
 
+    /*
+    Mock the chatService to avoid loading openAI related stuff
+     */
+    @MockitoBean
+    private ChatService chatService;
+
     /**
      * Test external microservice connection
      */
@@ -87,7 +93,7 @@ public class DealerServiceTest {
         DealerProperties dealerProperties = new DealerProperties();
         dealerProperties.setBaseUrl(dealerBaseUrl);
         log.info("baseUrl = {}", dealerBaseUrl);
-        DealerService dealerService = new DealerService(b, jwtUtil, dealerProperties);
+        DealerService dealerService = new DealerService(b, jwtUtil, dealerProperties, chatService);
         DealersResponse dealersResponse = dealerService.getAllDealers();
         log.info("dealersResponse = {}", dealersResponse);
 

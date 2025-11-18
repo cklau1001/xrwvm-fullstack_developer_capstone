@@ -7,12 +7,16 @@ the following 4 microservices.
 # Technology stack
 - SpringBoot 
   - Spring security for establishing fine-grained entitlement and JWT authentication with React
-  - Spring cache for storing responses of remote microservices
+  - Spring cache for storing responses of remote microservices and AI result that can both improve responsiveness
+    of the application and save costs (tokens)
+  - Virtual threads are used to optimize the response handling of potential long running AI response and avoid
+    the use of an async coding style.
+    
 - PostgreSQL database used by SpringBoot
 - NodeJS / Express
 - React as frontend
 - MongoDB
-- IBM Watsion Sentiment Analyzer
+- OpenAI chat completion endpoint via OpenRouter (default model: openai/gpt-o4-mini)
 
 Note: Django is deprecated in this version. 
 
@@ -31,6 +35,6 @@ user ---> frontend microservice             - RESTful / JWT token  -->   Dealers
              |  RESTful 
              |
              V
-          IBM Watsion Sentiment analyzer microservice 
+          OpenRouter chat completion endpoint 
           (Provide sentiment analysis on provided comment)
 ```
