@@ -9,6 +9,9 @@ the following 4 microservices.
   - Spring security for establishing fine-grained entitlement and JWT authentication with React
   - Spring cache for storing responses of remote microservices and AI result that can both improve responsiveness
     of the application and save costs (tokens)
+  - Virtual threads are used to optimize the response handling of potential long running AI response and avoid
+    the use of an async coding style.
+    
 - PostgreSQL database used by SpringBoot
 - NodeJS / Express
 - React as frontend
