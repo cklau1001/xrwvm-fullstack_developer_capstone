@@ -13,6 +13,7 @@ import java.util.Optional;
 @Slf4j
 @Configuration
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
+@Profile({"!test"})
 public class DBConfig {
 
     /*
